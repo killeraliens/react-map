@@ -41,8 +41,12 @@ body {
 
 .right-scene {
   flex: 0 0 40%;
-  .map {
-    height: 100vh;
+  .pin {
+    &:before {
+      font-family: FontAwesome;
+      content: '\f015';
+      font-size: 26px;
+      font-style: normal;
+    }
   }
-
 }

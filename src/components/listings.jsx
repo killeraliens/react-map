@@ -5,14 +5,16 @@ const Listings = ({flats}) => {
   return(
     <div className="listings">
       <div className="row">
-          {flats.map(({name, price, priceCurrency, imageUrl, lat, lng}) => {
+          {flats.map((props) => {
             return(
               <FlatCard
-                imageUrl={imageUrl}
-                price={price}
-                priceCurrency={priceCurrency}
-                imageUrl={imageUrl}
-                key={lat + ',' + lng}
+                imageUrl={props.imageUrl}
+                price={props.price}
+                priceCurrency={props.priceCurrency}
+                imageUrl={props.imageUrl}
+                key={props.lat + ',' + props.lng}
+                coords={{lat: props.lat, lng: props.lng}}
+                selectFlat={props.selectFlat}
               />
             )
           })}
