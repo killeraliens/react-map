@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import FlatCard from './flat_card.jsx';
 
-const Listings = ({flats}) => {
+const Listings = (props) => {
   return(
-    <div className="listings">
-      <div className="row">
-          {flats.map((props) => {
-            return(
-              <FlatCard
-                imageUrl={props.imageUrl}
-                price={props.price}
-                priceCurrency={props.priceCurrency}
-                imageUrl={props.imageUrl}
-                key={props.lat + ',' + props.lng}
-                coords={{lat: props.lat, lng: props.lng}}
-                selectFlat={props.selectFlat}
-              />
-            )
-          })}
-      </div>
+    <div className="row">
+      {props.flats.map((flat, index) => {
+        return(
+          <FlatCard
+            imageUrl={flat.imageUrl}
+            price={flat.price}
+            priceCurrency={flat.priceCurrency}
+            imageUrl={flat.imageUrl}
+            key={flat.lat + ',' + flat.lng}
+            index={index}
+            selectFlat={props.selectFlat}
+          />
+        )
+      })}
     </div>
-
   )
-
 }
 
 export default Listings;

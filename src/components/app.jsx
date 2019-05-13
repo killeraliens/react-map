@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
 import Listings from './listings.jsx';
 import flats from '../../data/flats.js';
-import GoogleMap from './google_map.jsx';
-// import GoogleMapReact from 'google-map-react';
+import Pin from './pin.jsx';
+import GoogleMapReact from 'google-map-react';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      center: {lat: 48.884211, lng: 2.34689},
-      pins: flats,
-      selectedCoords: {}
+      selectedFlat: flats[0]
     };
   }
 
-  centerMap = (lat, lng) => {
-    this.setState({
-      center: {lat: lat, lng: lng }
-    })
+  centerMap = () => {
+    return { lat: this.state.selectedFlat.lat, lng: this.state.selectedFlat.lng }
   };
 
-  select = (props) => {
+  selectFlat = (index) => {
     this.setState({
-      pins: props
+      selectedFlat: flats[index]
     })
   };
 
@@ -31,10 +27,14 @@ class App extends Component {
     return(
       <div>
         <div className="left-scene">
-          <Listings flats={flats} pins={this.state.pins} selectFlat={this.select} />
+          <div className="listings">
+              <Listings flats={flats} selectedFlat={this.state.selectedFlat} selectFlat={this.selectFlat} />
+          </div>
         </div>
         <div className="right-scene">
-          <GoogleMap pins={this.state.pins} center={this.state.center} centerMap={this.centerMap}/>
+          <GoogleMapReact defaultCenter={{lat: 48.884211, lng: 2.34689}} center={this.centerMap()} defaultZoom={12} bootstrapURLKeys={{ key: "AIzaSyBE17RJ8VaDNqp4sfn7mCUSCw6TB451ZEY", language: 'en' }}>
+            <Pin lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng}/>
+          </GoogleMapReact>
         </div>
       </div>
     )
