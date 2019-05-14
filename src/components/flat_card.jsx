@@ -9,7 +9,7 @@ class FlatCard extends Component {
   render() {
       return(
         <div className="col col-xs-12 col-md-6 col-lg-4">
-          <div className={this.props.selected ? "flat-card border" : "flat-card"} style={{backgroundImage: `url(${this.props.imageUrl})`}}  onClick={ this.handleClick }>
+          <div className={this.props.selected ? "flat-card active" : "flat-card"} style={{backgroundImage: `url(${this.props.imageUrl})`}}  onClick={ this.handleClick }>
             <div className="name">{`${this.props.name}`}</div>
           </div>
         </div>

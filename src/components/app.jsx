@@ -5,6 +5,7 @@ import Pin from './pin.jsx';
 import GoogleMapReact from 'google-map-react';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
 
@@ -30,13 +31,14 @@ class App extends Component {
   render() {
     return(
       <div>
+
         <div className="left-scene">
           <div className="listings">
               <Listings flats={flats} selectedFlat={this.state.selectedFlat} selectFlat={this.selectFlat} />
           </div>
         </div>
         <div className="right-scene">
-          <GoogleMapReact defaultCenter={this.state.center} center={this.centerMap()} defaultZoom={12} bootstrapURLKeys={{ key: "AIzaSyBE17RJ8VaDNqp4sfn7mCUSCw6TB451ZEY", language: 'en' }}>
+          <GoogleMapReact defaultCenter={this.state.center} center={this.centerMap()} defaultZoom={12} bootstrapURLKeys={{ key: `${process.env.API_URL}`, language: 'en' }}>
             <Pin lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng}/>
           </GoogleMapReact>
         </div>

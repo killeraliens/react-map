@@ -41,8 +41,10 @@ body {
       }
     }
 
-    .border {
-      border: 2px solid black;
+    .active {
+      // border: 2px solid black;
+      box-shadow: 1px 1px 8px rgba(0, 0, 0, .3);
+
     }
 
   }
