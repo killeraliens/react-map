@@ -7,12 +7,13 @@ const Listings = (props) => {
       {props.flats.map((flat, index) => {
         return(
           <FlatCard
+            name={flat.name}
             imageUrl={flat.imageUrl}
             price={flat.price}
             priceCurrency={flat.priceCurrency}
-            imageUrl={flat.imageUrl}
             key={flat.lat + ',' + flat.lng}
             index={index}
+            selected={flat.name === props.selectedFlat.name}
             selectFlat={props.selectFlat}
           />
         )

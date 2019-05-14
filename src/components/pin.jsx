@@ -4,11 +4,14 @@ import React, { Component } from 'react';
 class Pin extends Component {
 
   render() {
-    return (
-      <i className="pin fas fa-home" ></i>
-    )
-  }
+    if (this.props.lat) {
+      return (
+        <i className="pin fas fa-home" ></i>
+      )
 
+    }
+    return null;
+  }
 }
 
 export default Pin;

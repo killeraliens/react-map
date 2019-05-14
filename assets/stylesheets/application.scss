@@ -24,16 +24,23 @@ body {
       background-size: cover;
       background-position: center;
       margin: 0px 0px;
+      color: white;
 
       .price-wrap {
         font-size: 18px;
         display: flex;
+        position: absolute;
+        top: 10px;
+        left: 16px;
       }
-      .description {
+      .name {
         font-size: 16px;
+        position: absolute;
+        bottom: 10px;
+        left: 16px;
       }
-
     }
+
     .border {
       border: 2px solid black;
     }

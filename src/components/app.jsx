@@ -9,11 +9,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      selectedFlat: flats[0]
+      selectedFlat: flats,
+      center: {lat: 48.884211, lng: 2.34689}
     };
   }
 
   centerMap = () => {
+    if (this.state.selectedFlat === flats) {
+      return this.state.center
+    }
     return { lat: this.state.selectedFlat.lat, lng: this.state.selectedFlat.lng }
   };
 
@@ -32,7 +36,7 @@ class App extends Component {
           </div>
         </div>
         <div className="right-scene">
-          <GoogleMapReact defaultCenter={{lat: 48.884211, lng: 2.34689}} center={this.centerMap()} defaultZoom={12} bootstrapURLKeys={{ key: "AIzaSyBE17RJ8VaDNqp4sfn7mCUSCw6TB451ZEY", language: 'en' }}>
+          <GoogleMapReact defaultCenter={this.state.center} center={this.centerMap()} defaultZoom={12} bootstrapURLKeys={{ key: "AIzaSyBE17RJ8VaDNqp4sfn7mCUSCw6TB451ZEY", language: 'en' }}>
             <Pin lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng}/>
           </GoogleMapReact>
         </div>
